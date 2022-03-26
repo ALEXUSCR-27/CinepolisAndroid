@@ -43,7 +43,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.223" />
+                app:layout_constraintVertical_bias="0.23000002" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -52,7 +52,7 @@
                 android:fontFamily="@font/nunito_semibold"
                 android:text="Nombre"
                 android:textColor="@color/colorfuente2"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/NombreUsuario"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.09"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
                 app:layout_constraintHorizontal_bias="0.09"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NombreUsuario"
-                app:layout_constraintVertical_bias="0.17000002" />
+                app:layout_constraintVertical_bias="0.22000003" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -107,7 +107,7 @@
                 app:layout_constraintHorizontal_bias="0.72"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NombreUsuario"
-                app:layout_constraintVertical_bias="0.17000002" />
+                app:layout_constraintVertical_bias="0.22000003" />
 
             <EditText
                 android:id="@+id/PApellido"
@@ -163,7 +163,7 @@
                 app:layout_constraintHorizontal_bias="0.09"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SApellido"
-                app:layout_constraintVertical_bias="0.24000001" />
+                app:layout_constraintVertical_bias="0.52" />
 
             <EditText
                 android:id="@+id/CorreoUsuario"
@@ -182,7 +182,7 @@
                 app:layout_constraintHorizontal_bias="0.139"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.57"
+                app:layout_constraintVertical_bias="0.59000003"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -197,12 +197,14 @@
                 app:layout_constraintHorizontal_bias="0.09"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/CorreoUsuario"
-                app:layout_constraintVertical_bias="0.17000002" />
+                app:layout_constraintVertical_bias="0.42000002" />
 
             <EditText
                 android:id="@+id/Cedula"
-                android:layout_width="363dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/border_input"
                 android:ems="10"
                 android:fontFamily="@font/nunito_semibold"
@@ -213,8 +215,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.65999997"
-                 />
+                app:layout_constraintVertical_bias="0.7" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -228,7 +229,7 @@
                 app:layout_constraintHorizontal_bias="0.09"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Cedula"
-                app:layout_constraintVertical_bias="0.06999999" />
+                app:layout_constraintVertical_bias="0.45" />
 
             <EditText
                 android:id="@+id/FechaNacimiento"
@@ -247,7 +248,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Cedula"
-                app:layout_constraintVertical_bias="0.120000005"
+                app:layout_constraintVertical_bias="0.23000002"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -262,7 +263,7 @@
                 app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Cedula"
-                app:layout_constraintVertical_bias="0.060000002" />
+                app:layout_constraintVertical_bias="0.45" />
 
             <Spinner
                 android:id="@+id/Vacunacion"
@@ -277,37 +278,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Cedula"
-                app:layout_constraintVertical_bias="0.120000005"
-                 />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_semibold"
-                android:text="Contraseña"
-                android:textColor="@color/colorfuente2"
-                app:layout_constraintBottom_toTopOf="@+id/Contrasena"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.09"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/FechaNacimiento"
-                app:layout_constraintVertical_bias="0.32" />
-
-            <EditText
-                android:id="@+id/Contrasena"
-                android:layout_width="362dp"
-                android:layout_height="48dp"
-                android:background="@drawable/border_input"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/buttonRegistro"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/FechaNacimiento"
-                app:layout_constraintVertical_bias="0.36" />
+                app:layout_constraintVertical_bias="0.23000002" />
 
             <Button
                 android:id="@+id/buttonRegistro"
@@ -320,7 +291,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.96" />
+                app:layout_constraintVertical_bias="0.92" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -1,41 +1,52 @@
 package com.example.cinepolisapp.entidades;
 
 public class Usuario {
-    private String  Correo;
-    private String Contrasena;
+    private String  email;
+    private String password;
     private String Nombre;
     private String PrimerApellido;
     private String SegundoApellido;
     private String EstadoVacunacion;
     private String Cedula;
     private String FechaNacimiento;
+    private Boolean type;
 
 
-    public Usuario(String correo, String contrasena, String nombre, String primerApellido, String segundoApellido, String estadoVacunacion, String cedula, String fechaNacimiento) {
-        Correo = correo;
-        Contrasena = contrasena;
+    public Usuario(String email, String Password, String nombre, String primerApellido, String segundoApellido, String estadoVacunacion, String cedula, String fechaNacimiento, boolean type) {
+        this.email = email;
+        password = Password;
         Nombre = nombre;
         PrimerApellido = primerApellido;
         SegundoApellido = segundoApellido;
         EstadoVacunacion = estadoVacunacion;
         Cedula = cedula;
         FechaNacimiento = fechaNacimiento;
+        this.password = password;
+        this.type = type;
     }
 
-    public String getCorreo() {
-        return Correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        Correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getContrasena() {
-        return Contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasena(String contrasena) {
-        Contrasena = contrasena;
+    public boolean getType() {
+        return type;
+    }
+
+    public void setType(boolean admin) {
+        this.type = admin;
+    }
+
+    public void setPassword(String Password) {
+        password = Password;
     }
 
     public String getNombre() {

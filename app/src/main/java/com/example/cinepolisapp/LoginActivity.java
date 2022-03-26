@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnRegistro;
     private EditText correo;
     private EditText contraseña;
+    private int admin;
 
 
 
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         contraseña = findViewById(R.id.editTextTextPassword);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.17:9000/cinepolis-web/")
+                .baseUrl("http://192.168.0.12:9000/cinepolis-web/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(apiRest.class);
@@ -100,8 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-
-
                 if (response.isSuccessful()) {
                     if (response.body().isEmpty()) {
                         AlertDialog.Builder error = new AlertDialog.Builder(LoginActivity.this);
@@ -137,9 +136,19 @@ public class LoginActivity extends AppCompatActivity {
         AlertDialog.Builder error2 = new AlertDialog.Builder(LoginActivity.this);
 
         for (Usuario us : usuarios) {
-            if (correo.getText().toString().equals(us.getCorreo()) && contraseña.getText().toString().equals(us.getContrasena())) {
-                Intent main = new Intent(this, MainActivity.class);
-                startActivity(main);
+
+            Log.i("error",us.getPassword());
+            if (correo.getText().toString().equals(us.getEmail()) && contraseña.getText().toString().equals(us.getPassword())) {
+                if (us.getType()) {
+                    Intent admin = new Intent(this, AdminActivity.class);
+                    startActivity(admin);
+                    return;
+                }
+                else {
+                    Intent main = new Intent(this, MainActivity.class);
+                    startActivity(main);
+                    return;
+                }
             }
         }
         error2.setMessage("Correo y contraseña incorrectos")
