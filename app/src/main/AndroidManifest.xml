@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".ModificarPeliculaActivity"
+            android:exported="false" />
+        <activity
             android:name=".PeliculasAdminActivity"
             android:exported="false" />
         <activity
