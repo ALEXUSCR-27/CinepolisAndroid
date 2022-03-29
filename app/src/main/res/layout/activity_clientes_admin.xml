@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F5F5"
-    android:windowSoftInputMode="adjustPan"
-    tools:context=".PeliculasAdminActivity">
+    tools:context=".ClientesAdminActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -25,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/karma_bold"
-        android:text="Películas"
+        android:text="Cartelera"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorfuente"
         android:textSize="48sp"
@@ -37,11 +36,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="246dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/nunito_semibold"
-        android:text="ID de la película"
+        android:text="ID de la pelicula"
         android:textColor="@color/colorfuente2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
@@ -91,24 +91,21 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_rounded"
         android:fontFamily="@font/karma_bold"
-        android:text="Agregar Película"
+        android:text="Agregar Pelicular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idPelicula" />
 
-
     <ListView
         android:id="@+id/resultadosPeliculas"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="414dp"
+        android:layout_height="297dp"
         android:layout_marginTop="8dp"
-        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agregarPelicula"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

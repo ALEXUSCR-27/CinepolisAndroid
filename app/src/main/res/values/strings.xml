@@ -19,8 +19,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="cine">Cinépolis</string>
     <string-array name="estado_vacunacion">
-        <item>Ninguna</item>
-        <item>Incompleto</item>
-        <item>Completo</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 </resources>

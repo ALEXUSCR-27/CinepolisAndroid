@@ -42,8 +42,8 @@ public class RegistroActivity extends AppCompatActivity {
     private String NombreUsuario;
     private String PrimerApellido;
     private String SegundoApellido;
-    private String EstadoVacunacion;
-    private String CedulaUsuario;
+    private int EstadoVacunacion;
+    private int CedulaUsuario;
     private String FechaNacimientoU;
 
 
@@ -54,7 +54,7 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.12:9000/cinepolis-web/")
+                .baseUrl("http://10.0.2.2:9000/cinepolis-web/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(apiRest.class);
@@ -96,8 +96,8 @@ public class RegistroActivity extends AppCompatActivity {
                     NombreUsuario = Nombre.getText().toString();
                     PrimerApellido = PApellido.getText().toString();
                     SegundoApellido = SApellido.getText().toString();
-                    EstadoVacunacion = spinner.getSelectedItem().toString();
-                    CedulaUsuario = Cedula.getText().toString();
+                    EstadoVacunacion = Integer.parseInt(spinner.getSelectedItem().toString());
+                    CedulaUsuario = Integer.parseInt(Cedula.getText().toString());
                     FechaNacimientoU = FechaNacimiento.getText().toString();
                     VerificarUsuario();
                 }
@@ -108,7 +108,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void VerificarUsuario() {
-        Usuario usuario = new Usuario(CorreoUsuario,ContrasenaUsuario,NombreUsuario,PrimerApellido,SegundoApellido,EstadoVacunacion,CedulaUsuario,FechaNacimientoU,false);
+        Usuario usuario = new Usuario(0,CorreoUsuario,"",NombreUsuario,PrimerApellido,SegundoApellido,CedulaUsuario,EstadoVacunacion,FechaNacimientoU,0,false);
         Call<List<Usuario>> call = api.getUsuario();
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
@@ -144,17 +144,16 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void realizarRegistro(Usuario usuario) {
-        Log.i("registro","si llego papu:(");
         Call<List<Usuario>> call = api.registrarUsuario(usuario);
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                Log.i("registro","listo papu");
+                Log.i("Registro","Registro exitoso");
             }
 
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Log.i("registro","cagaste");
+                Log.i("Registro","Error en el registro");
             }
         });
         AlertDialog.Builder exito = new AlertDialog.Builder(RegistroActivity.this);

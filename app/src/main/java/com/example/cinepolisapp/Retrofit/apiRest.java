@@ -19,4 +19,7 @@ public interface apiRest {
 
     @POST("registro")
     Call<List<Usuario>> registrarUsuario(@Body Usuario usuario);
+
+    @GET("getPelicula")
+    Call<List<Peliculas>> getListaPeliculas();
 }

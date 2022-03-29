@@ -31,9 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText contraseña;
     private int admin;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         contraseña = findViewById(R.id.editTextTextPassword);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.12:9000/cinepolis-web/")
+                .baseUrl("http://192.168.0.17:9000/cinepolis-web/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(apiRest.class);
@@ -70,32 +67,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    private void registro() {
-        Intent registro = new Intent (this,RegistroActivity.class);
-        startActivity(registro);
-    }
-
-    private void getPeliculas() {
-
-        Call<List<Peliculas>> call = api.getPeliculas();
-        call.enqueue(new Callback<List<Peliculas>>() {
-            @Override
-            public void onResponse(Call<List<Peliculas>> call, Response<List<Peliculas>> response) {
-
-                List<Peliculas> pelis = response.body();
-
-                for (Peliculas p : pelis) {
-                    Log.i("Title: ", p.getTitle());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Peliculas>> call, Throwable t) {
-                Log.i("error: ", "error pa");
-            }
-        });
-    }
-
     private void getUsuario() {
         Call<List<Usuario>> call = api.getUsuario();
         call.enqueue(new Callback<List<Usuario>>() {
@@ -127,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Log.i("Codigo: ", "no");
+                Log.i("Revision", "Error de transaccion");
             }
         });
     }
@@ -136,10 +107,9 @@ public class LoginActivity extends AppCompatActivity {
         AlertDialog.Builder error2 = new AlertDialog.Builder(LoginActivity.this);
 
         for (Usuario us : usuarios) {
-
             Log.i("error",us.getPassword());
             if (correo.getText().toString().equals(us.getEmail()) && contraseña.getText().toString().equals(us.getPassword())) {
-                if (us.getType()) {
+                if (us.isType()) {
                     Intent admin = new Intent(this, AdminActivity.class);
                     startActivity(admin);
                     return;
@@ -162,5 +132,10 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
         error2.show();
+    }
+
+    private void registro() {
+        Intent registro = new Intent (this,RegistroActivity.class);
+        startActivity(registro);
     }
 }

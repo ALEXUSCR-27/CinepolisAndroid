@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".MainActivity2"
+            android:name=".ClientesAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarPeliculaActivity"
             android:exported="false" />
         <activity
             android:name=".ModificarPeliculaActivity"

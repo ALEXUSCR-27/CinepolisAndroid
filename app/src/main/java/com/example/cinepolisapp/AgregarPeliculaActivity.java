@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class ModificarPeliculaActivity extends AppCompatActivity {
-
-    private TextView NombrePelicula;
+public class AgregarPeliculaActivity extends AppCompatActivity {
     private EditText Titulo;
     private EditText Actores;
     private EditText Director;
@@ -22,16 +19,13 @@ public class ModificarPeliculaActivity extends AppCompatActivity {
     private EditText PG;
     private EditText Duracion;
 
-    private Button btnGuardar;
-    private Button btnEliminar;
-
+    private Button  btnAgregar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modificar_pelicula);
+        setContentView(R.layout.activity_agregar_pelicula);
 
-        NombrePelicula.setText("Hola");
         Titulo = findViewById(R.id.Titulo);
         Actores = findViewById(R.id.Actores);
         Director = findViewById(R.id.Director);
@@ -44,7 +38,6 @@ public class ModificarPeliculaActivity extends AppCompatActivity {
         PG = findViewById(R.id.PG);
         Duracion = findViewById(R.id.Duracion);
 
-        btnEliminar = findViewById(R.id.Eliminar);
-        btnGuardar = findViewById(R.id.Guardar);
+        btnAgregar = findViewById(R.id.Agregar);
     }
 }
