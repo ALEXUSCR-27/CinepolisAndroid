@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         contraseña = findViewById(R.id.editTextTextPassword);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.17:9000/cinepolis-web/")
+                .baseUrl("http://10.0.2.2:9000/cinepolis-web/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(apiRest.class);

@@ -1,27 +1,44 @@
 package com.example.cinepolisapp.entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Peliculas {
-    private String movieID;
+public class Peliculas implements Serializable {
+    private int movieID;
     private String title;
     private String director;
     private String actors;
     private String languages;
     private String genres;
-    private String runtimeMin;
-    private String year;
-    private String ageRequired;
-    private String priceN;
-    private String priceG;
-    private String priceM;
+    private int runtimeMin;
+    private int year;
+    private int ageRequired;
+    private int priceN;
+    private int priceG;
+    private int priceM;
     private boolean display;
 
-    public String getMovieID() {
+    public Peliculas(int movieID, String title, String director, String actors, String languages, String genres, int runtimeMin, int year, int ageRequired, int priceN, int priceG, int priceM, boolean display) {
+        this.movieID = movieID;
+        this.title = title;
+        this.director = director;
+        this.actors = actors;
+        this.languages = languages;
+        this.genres = genres;
+        this.runtimeMin = runtimeMin;
+        this.year = year;
+        this.ageRequired = ageRequired;
+        this.priceN = priceN;
+        this.priceG = priceG;
+        this.priceM = priceM;
+        this.display = display;
+    }
+
+    public int getMovieID() {
         return movieID;
     }
 
-    public void setMovieID(String movieID) {
+    public void setMovieID(int movieID) {
         this.movieID = movieID;
     }
 
@@ -65,51 +82,51 @@ public class Peliculas {
         this.genres = genres;
     }
 
-    public String getRuntimeMin() {
+    public int getRuntimeMin() {
         return runtimeMin;
     }
 
-    public void setRuntimeMin(String runtimeMin) {
+    public void setRuntimeMin(int runtimeMin) {
         this.runtimeMin = runtimeMin;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public String getAgeRequired() {
+    public int getAgeRequired() {
         return ageRequired;
     }
 
-    public void setAgeRequired(String ageRequired) {
+    public void setAgeRequired(int ageRequired) {
         this.ageRequired = ageRequired;
     }
 
-    public String getPriceN() {
+    public int getPriceN() {
         return priceN;
     }
 
-    public void setPriceN(String priceN) {
+    public void setPriceN(int priceN) {
         this.priceN = priceN;
     }
 
-    public String getPriceG() {
+    public int getPriceG() {
         return priceG;
     }
 
-    public void setPriceG(String priceG) {
+    public void setPriceG(int priceG) {
         this.priceG = priceG;
     }
 
-    public String getPriceM() {
+    public int getPriceM() {
         return priceM;
     }
 
-    public void setPriceM(String priceM) {
+    public void setPriceM(int priceM) {
         this.priceM = priceM;
     }
 

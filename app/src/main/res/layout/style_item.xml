@@ -5,4 +5,5 @@
     android:layout_height="wrap_content"
     android:textColor="@color/black"
     android:textAlignment="center"
+    android:textSize="18sp"
     android:fontFamily="@font/nunito_semibold" />

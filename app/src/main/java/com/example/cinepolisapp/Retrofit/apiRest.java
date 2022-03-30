@@ -22,4 +22,16 @@ public interface apiRest {
 
     @GET("getPelicula")
     Call<List<Peliculas>> getListaPeliculas();
+
+    @POST("addPelicula")
+    Call<List<Peliculas>> addPeliculas(@Body Peliculas pelicula);
+
+    @GET("getCliente")
+    Call<List<Usuario>> getClientes();
+
+    @POST("modPelicula")
+    Call<List<Peliculas>> modPelicula(@Body Peliculas pelicula);
+
+    @POST("eliPelicula")
+    Call<List<Peliculas>> eliPelicula(@Body int id);
 }

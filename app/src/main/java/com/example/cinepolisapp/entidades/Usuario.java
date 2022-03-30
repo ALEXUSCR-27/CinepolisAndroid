@@ -1,6 +1,8 @@
 package com.example.cinepolisapp.entidades;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private int userID;
     private String email;
     private String password;
