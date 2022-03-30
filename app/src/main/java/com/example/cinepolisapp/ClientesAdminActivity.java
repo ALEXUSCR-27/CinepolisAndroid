@@ -33,10 +33,12 @@ public class ClientesAdminActivity extends AppCompatActivity {
     private Button agregarCliente;
 
     private ListView lista;
-    private List<String> resultados = new ArrayList<>();
+    private List<String> resultados;
     ArrayAdapter<String> adapter;
     private apiRest api;
     private int cedula;
+
+    private Usuario usuario;
 
 
     @Override
@@ -46,6 +48,7 @@ public class ClientesAdminActivity extends AppCompatActivity {
 
         cedulaCliente = findViewById(R.id.cedulaCliente);
         btnBuscar = findViewById(R.id.Buscar);
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:9000/cinepolis-web/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -60,7 +63,6 @@ public class ClientesAdminActivity extends AppCompatActivity {
                 buscarClientes();
             }
         });
-        cedulaCliente = findViewById(R.id.cedulaCliente);
 
         agregarCliente = findViewById(R.id.agregarCliente);
 
@@ -77,35 +79,29 @@ public class ClientesAdminActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("seleccion","si");
+                if (!resultados.get(i).toString().equals("Sin resultados")){
+                    modificarCliente();
+                }
             }
         });
     }
 
     private void agregarC() {
+        cedulaCliente.getText().clear();
         Intent agregaClientes = new Intent(this,AgregarClienteActivity.class);
         startActivity(agregaClientes);
     }
 
     private void buscarClientes() {
+        resultados = new ArrayList<>();
         if (cedulaCliente.getText().toString().isEmpty()) {
-            AlertDialog.Builder error2 = new AlertDialog.Builder(ClientesAdminActivity.this);
-            error2.setMessage("Debe de llenar todos los campos")
-                    .setTitle("Error de busqueda de clientes")
-                    .setCancelable(false)
-                    .setIcon(R.drawable.error_icon)
-                    .setNegativeButton("Intentar de nuevo", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-            error2.show();
+            cedulaCliente.setError("Por favor ingresa el número de identificación del cliente");
         }
         else {
             cedula = Integer.parseInt(cedulaCliente.getText().toString());
             cedulaCliente.getText().clear();
 
-            Call<List<Usuario>> call = api.getClientes();
+            Call<List<Usuario>> call = api.getUsuario();
             call.enqueue(new Callback<List<Usuario>>() {
                 @Override
                 public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
@@ -121,15 +117,26 @@ public class ClientesAdminActivity extends AppCompatActivity {
         }
     }
 
+    private void modificarCliente() {
+        Intent modificarCliente = new Intent(this,ModificarClienteActivity.class);
+        modificarCliente.putExtra("Cliente",usuario);
+
+        resultados = new ArrayList<>();
+        adapter = new ArrayAdapter<>(this,R.layout.style_item,resultados);
+        lista.setAdapter(adapter);
+
+        startActivity(modificarCliente);
+    }
+
     private void presentarResultados(List<Usuario> usuarios) {
         for (Usuario us :usuarios) {
             if (cedula == us.getID()) {
                 resultados.add(us.getName());
+                usuario = us;
+                break;
             }
         }
-        if (resultados.isEmpty()) {
-            resultados.add("Sin resultados");
-        }
+        if (resultados.isEmpty()) { resultados.add("Sin resultados");}
         adapter = new ArrayAdapter<>(this,R.layout.style_item,resultados);
         lista.setAdapter(adapter);
     }

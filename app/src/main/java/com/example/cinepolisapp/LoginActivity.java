@@ -109,6 +109,8 @@ public class LoginActivity extends AppCompatActivity {
         for (Usuario us : usuarios) {
             Log.i("error",us.getPassword());
             if (correo.getText().toString().equals(us.getEmail()) && contraseña.getText().toString().equals(us.getPassword())) {
+                correo.getText().clear();
+                contraseña.getText().clear();
                 if (us.isType()) {
                     Intent admin = new Intent(this, AdminActivity.class);
                     startActivity(admin);
@@ -135,6 +137,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void registro() {
+        correo.getText().clear();
+        contraseña.getText().clear();
         Intent registro = new Intent (this,RegistroActivity.class);
         startActivity(registro);
     }

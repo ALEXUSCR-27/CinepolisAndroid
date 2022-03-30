@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.cinepolisapp.Retrofit.apiRest;
 import com.example.cinepolisapp.entidades.Peliculas;
@@ -33,7 +34,7 @@ public class PeliculasAdminActivity extends AppCompatActivity {
     private Button btnBuscar;
     private ListView lista;
     private Button agregarPelicula;
-    private List<String> resultados = new ArrayList<>();
+    private List<String> resultados;
     private Peliculas pelicula;
     private ArrayAdapter<String> adapter;
     private apiRest api;
@@ -61,7 +62,9 @@ public class PeliculasAdminActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("seleccion",resultados.get(i).toString());
-                modificaPelicula();
+                if (!resultados.get(i).toString().equals("Sin resultados")) {
+                    modificaPelicula();
+                }
             }
         });
         agregarPelicula = findViewById(R.id.agregarPelicula);
@@ -83,6 +86,11 @@ public class PeliculasAdminActivity extends AppCompatActivity {
     private void modificaPelicula() {
         Intent modificarPelicula = new Intent(this,ModificarPeliculaActivity.class);
         modificarPelicula.putExtra("Pelicula",pelicula);
+
+        resultados = new ArrayList<>();
+        adapter = new ArrayAdapter<>(this,R.layout.style_item,resultados);
+        lista.setAdapter(adapter);
+
         startActivity(modificarPelicula);
     }
 
@@ -91,20 +99,8 @@ public class PeliculasAdminActivity extends AppCompatActivity {
         startActivity(agregaPelis);
     }
     private void BuscarPelicula() {
-        if (idPelicula.getText().toString().isEmpty()) {
-            AlertDialog.Builder error2 = new AlertDialog.Builder(PeliculasAdminActivity.this);
-            error2.setMessage("Debe de llenar todos los campos")
-                    .setTitle("Error de busqueda de películas")
-                    .setCancelable(false)
-                    .setIcon(R.drawable.error_icon)
-                    .setNegativeButton("Intentar de nuevo", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-            error2.show();
-        }
+        resultados  = new ArrayList<>();
+        if (idPelicula.getText().toString().isEmpty()) { Toast.makeText(this,"Por favor ingrese el número de identificación de la película",Toast.LENGTH_LONG).show();}
         else {
             idPeli = Integer.parseInt(idPelicula.getText().toString());
             idPelicula.getText().clear();

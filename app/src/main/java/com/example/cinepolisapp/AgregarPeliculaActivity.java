@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.cinepolisapp.Retrofit.apiRest;
 import com.example.cinepolisapp.entidades.Peliculas;
@@ -128,5 +129,7 @@ public class AgregarPeliculaActivity extends AppCompatActivity {
                 Log.i("Registro","Error al agregar pelicula");
             }
         });
+        Toast.makeText(this,"Se agregó correctamente la película",Toast.LENGTH_LONG).show();
+        finish();
     }
 }

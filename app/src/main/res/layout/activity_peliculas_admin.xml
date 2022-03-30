@@ -59,7 +59,7 @@
         android:background="@drawable/border_input"
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"

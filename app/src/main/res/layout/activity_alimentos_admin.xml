@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F6F5F5"
     android:windowSoftInputMode="adjustPan"
-    tools:context=".ClientesAdminActivity">
-
+    tools:context=".AlimentosAdminActivity">
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -25,12 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/karma_bold"
-        android:text="Clientes"
+        android:text="Alimentos"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorfuente"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.0" />
@@ -39,20 +39,19 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/nunito_semibold"
-        android:text="Número de cédula"
+        android:text="ID del alimento en específico"
         android:textColor="@color/colorfuente2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/cedulaCliente"
+        android:id="@+id/idAlimento"
         style="@style/Widget.AppCompat.EditText"
-        android:layout_width="166dp"
+        android:layout_width="189dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
@@ -84,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/agregarCliente"
+        android:id="@+id/agregarAlimento"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
@@ -92,13 +91,13 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_rounded"
         android:fontFamily="@font/karma_bold"
-        android:text="Agregar Cliente"
+        android:text="Agregar Alimento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cedulaCliente" />
+        app:layout_constraintTop_toBottomOf="@+id/idAlimento" />
 
     <ListView
-        android:id="@+id/resultadosClientes"
+        android:id="@+id/resultadosAlimentos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
@@ -107,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agregarCliente"
+        app:layout_constraintTop_toBottomOf="@+id/agregarAlimento"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

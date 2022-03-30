@@ -34,11 +34,33 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        clientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { ClientesAdmin();}
+        });
+
+        alimentos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlimentosAdmin();
+            }
+        });
+
 
     }
 
     private void PeliculasAdmin() {
         Intent pelis = new Intent(this,PeliculasAdminActivity.class);
         startActivity(pelis);
+    }
+
+    private void ClientesAdmin() {
+        Intent clientes = new Intent(this,ClientesAdminActivity.class);
+        startActivity(clientes);
+    }
+
+    private void AlimentosAdmin() {
+        Intent alimentos = new Intent(this,AlimentosAdminActivity.class);
+        startActivity(alimentos);
     }
 }

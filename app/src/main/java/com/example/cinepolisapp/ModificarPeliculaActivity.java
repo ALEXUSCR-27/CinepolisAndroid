@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cinepolisapp.Retrofit.apiRest;
 import com.example.cinepolisapp.entidades.Peliculas;
@@ -141,12 +142,12 @@ public class ModificarPeliculaActivity extends AppCompatActivity {
             error2.show();
         }
         else {
-            runtimeMin = pelicula.getRuntimeMin();
-            year = pelicula.getYear();
-            ageRequired = pelicula.getAgeRequired();
-            priceN = pelicula.getPriceN();
-            priceG = pelicula.getPriceG();
-            priceM = pelicula.getPriceM();
+            runtimeMin = Integer.parseInt(Duracion.getText().toString());
+            year = Integer.parseInt(Year.getText().toString());
+            ageRequired = Integer.parseInt(Edad.getText().toString());
+            priceN = Integer.parseInt(PN.getText().toString());
+            priceG = Integer.parseInt(PG.getText().toString());
+            priceM = Integer.parseInt(PM.getText().toString());
             Peliculas peliculaMod = new Peliculas(pelicula.getMovieID(),Titulo.getText().toString(),Director.getText().toString(),Actores.getText().toString(),Lenguajes.getText().toString(),
                     Generos.getText().toString(),runtimeMin,year,ageRequired,priceN,priceG,priceM,pelicula.isDisplay());
 
@@ -154,7 +155,7 @@ public class ModificarPeliculaActivity extends AppCompatActivity {
             call.enqueue(new Callback<List<Peliculas>>() {
                 @Override
                 public void onResponse(Call<List<Peliculas>> call, Response<List<Peliculas>> response) {
-                    Log.i("Registro","Modificacion realizada con exito");
+                    Log.i("Registro","Registro realizado con exito");
                 }
 
                 @Override
@@ -162,11 +163,13 @@ public class ModificarPeliculaActivity extends AppCompatActivity {
                     Log.i("Registro","Error al realizar la modificacion");
                 }
             });
+            Toast.makeText(this,"Cambios realizados con exito",Toast.LENGTH_LONG).show();
+            finish();
         }
     }
 
     private void eliminarPelicula() {
-        Call<List<Peliculas>> call = api.eliPelicula(pelicula.getMovieID());
+        Call<List<Peliculas>> call = api.eliPelicula(pelicula);
         call.enqueue(new Callback<List<Peliculas>>() {
             @Override
             public void onResponse(Call<List<Peliculas>> call, Response<List<Peliculas>> response) {
@@ -178,6 +181,7 @@ public class ModificarPeliculaActivity extends AppCompatActivity {
                 Log.i("Registro","Error al eliminar la pelicula");
             }
         });
+        Toast.makeText(this,"Se eliminó la película con exito",Toast.LENGTH_LONG).show();
         finish();
     }
 }
