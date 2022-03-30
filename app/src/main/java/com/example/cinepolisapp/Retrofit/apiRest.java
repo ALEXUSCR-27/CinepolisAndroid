@@ -43,4 +43,6 @@ public interface apiRest {
     Call<List<Alimento>> modAlimento(@Body Alimento alimento);
     @POST("eliAlimento")
     Call<List<Alimento>> eliAlimento(@Body Alimento alimento);
+    @POST("addAlimento")
+    Call<List<Alimento>> addAlimento(@Body Alimento alimento);
 }
